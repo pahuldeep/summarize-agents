@@ -52,7 +52,7 @@ This project is licensed under the terms of the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions or concerns regarding this project, please reach out to [Your Name] at [Your Email].
+If you have any questions or concerns regarding this project, please reach out to [pahuldeep singh](https://www.linkedin.com/in/pahuldeep/) at [@pahuldeep](pahuldeep100@gmail.com).
 
 Happy coding!
 
