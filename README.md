@@ -1,4 +1,4 @@
-# Project Title: Interactive Summarization Application
+# Summarization-hub Application
 
 Welcome to this Interactive Summarization Application! This repository contains the source code for a web-based application that allows users to learn and read and understand based custom LLM based agents, AI-powered agents for generating different narrative styles.
 
