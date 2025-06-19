@@ -27,10 +27,10 @@ Welcome to this Interactive Summarization Application! This repository contains 
 
 To get started with this project, you will need to have Python 3 and a web server (such as Flask or Django) installed on your system. Install the required dependencies by running:
 
-need local LLMs (e.g. ollama or llama.cpp based llm, server side)
+**Important** need local LLMs (e.g. ollama or llama.cpp based llm, server side)
 
 ```sh
-pip install flask, request
+pip install flask request
 ```
 
 You can then run the application using:
