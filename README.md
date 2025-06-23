@@ -6,31 +6,21 @@ Welcome to this Interactive Summarization Application! This repository contains 
 
 ### Desktop Interface
 
-![Front Page](screenshots/front.png)
-*Main interface of the summarization application*
-
-![Input Section](screenshots/input.png)
-*Text input area for content to be summarized*
-
-![Results Display](screenshots/result.png)
-*Generated summarization results*
-
-![History View](screenshots/history.png)
-*Previous summarization history*
-
-![Tips and Help](screenshots/tips.png)
-*Helpful tips and guidance*
+| Feature | Screenshot | Description |
+|---------|------------|-------------|
+| Main Interface | ![Front Page](screenshots/front.png) | Main interface of the summarization application |
+| Input Section | ![Input Section](screenshots/input.png) | Text input area for content to be summarized |
+| Results Display | ![Results Display](screenshots/result.png) | Generated summarization results |
+| History View | ![History View](screenshots/history.png) | Previous summarization history |
+| Tips and Help | ![Tips and Help](screenshots/tips.png) | Helpful tips and guidance |
 
 ### Mobile Interface
 
-<img src="screenshots/android_front.png" width="300" alt="Mobile Front Page">
-*Mobile-optimized main interface*
-
-<img src="screenshots/android_input.png" width="300" alt="Mobile Input">
-*Mobile text input interface*
-
-<img src="screenshots/android_history.png" width="300" alt="Mobile History">
-*Mobile history view*
+| Feature | Screenshot | Description |
+|---------|------------|-------------|
+| Main Interface | <img src="screenshots/android_front.png" width="200" alt="Mobile Front Page"> | Mobile-optimized main interface |
+| Input Section | <img src="screenshots/android_input.png" width="200" alt="Mobile Input"> | Mobile text input interface |
+| History View | <img src="screenshots/android_history.png" width="200" alt="Mobile History"> | Mobile history view |
 
 ## Directory Structure
 
