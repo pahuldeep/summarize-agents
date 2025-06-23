@@ -23,13 +23,13 @@ Welcome to this Interactive Summarization Application! This repository contains 
 
 ### Mobile Interface
 
-![Mobile Front Page](screenshots/android_front.png)
+<img src="screenshots/android_front.png" width="300" alt="Mobile Front Page">
 *Mobile-optimized main interface*
 
-![Mobile Input](screenshots/android_input.png)
+<img src="screenshots/android_input.png" width="300" alt="Mobile Input">
 *Mobile text input interface*
 
-![Mobile History](screenshots/android_history.png)
+<img src="screenshots/android_history.png" width="300" alt="Mobile History">
 *Mobile history view*
 
 ## Directory Structure
