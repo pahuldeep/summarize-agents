@@ -22,6 +22,8 @@ updateTextStats(textInput);
 initShortcuts({ summarizeBtn, textInput });
 
 updateProgress();
+clearDraft();
+
 
 function updateSummarizeButton() {
     const hasText = textInput.value.trim().length > 0;
@@ -34,6 +36,7 @@ textInput.addEventListener('input', () => {
     updateProgress();
     updateTextStats(textInput);
     updateSummarizeButton();
+    
    
 
 });
@@ -68,6 +71,7 @@ async function standardSummary(text, agent, startTime) {
         const duration = ((Date.now() - startTime) / 1000).toFixed(1);
         displayResult(data, text, duration);
         loadHistory(displayHistory);
+        clearDraft()
 
     } else {
         showError(data.error);
@@ -108,6 +112,7 @@ async function streamSummary(text, agent, startTime) {
         const duration = ((Date.now() - startTime) / 1000).toFixed(1);
         displayResult({ summary, agent }, text, duration);
         loadHistory(displayHistory);
+        clearDraft()
 
     } catch (e) {
         showError(e.message);

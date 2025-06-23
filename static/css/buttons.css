@@ -1,0 +1,87 @@
+.btn {
+    border-radius: 14px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1.5px solid var(--border-color);
+    background: var(--glass-bg);
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--dark-color);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #4da3c7cc, #b2d8e5cc);
+    border: 1.5px solid var(--primary-color);
+    color: var(--dark-color);
+    box-shadow: 0 8px 32px 0 rgba(77, 163, 199, 0.10);
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 24px 0 rgba(77, 163, 199, 0.16);
+    background: linear-gradient(45deg, #4da3c7ee, #b2d8e5ee);
+}
+
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-outline-primary {
+    border: 1.5px solid var(--primary-color);
+    color: var(--primary-color);
+    background: var(--glass-bg);
+    box-shadow: var(--shadow-glass);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.btn-outline-secondary {
+    border: 2px solid #6b7280;
+    color: #6b7280;
+}
+
+.btn-outline-danger {
+    border: 1.5px solid var(--danger-color);
+    color: var(--danger-color);
+    background: var(--glass-bg);
+    box-shadow: var(--shadow-glass);
+}
+
+.btn-outline-danger:hover {
+    background: var(--danger-color);
+    color: white;
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: shine 2s infinite;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%);
+    }
+    20%, 100% {
+        transform: translateX(100%);
+    }
+}

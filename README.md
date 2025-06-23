@@ -2,6 +2,36 @@
 
 Welcome to this Interactive Summarization Application! This repository contains the source code for a web-based application that allows users to learn and read and understand based custom LLM based agents, AI-powered agents for generating different narrative styles.
 
+## Screenshots
+
+### Desktop Interface
+
+![Front Page](screenshots/front.png)
+*Main interface of the summarization application*
+
+![Input Section](screenshots/input.png)
+*Text input area for content to be summarized*
+
+![Results Display](screenshots/result.png)
+*Generated summarization results*
+
+![History View](screenshots/history.png)
+*Previous summarization history*
+
+![Tips and Help](screenshots/tips.png)
+*Helpful tips and guidance*
+
+### Mobile Interface
+
+![Mobile Front Page](screenshots/android_front.png)
+*Mobile-optimized main interface*
+
+![Mobile Input](screenshots/android_input.png)
+*Mobile text input interface*
+
+![Mobile History](screenshots/android_history.png)
+*Mobile history view*
+
 ## Directory Structure
 
 ```markdown

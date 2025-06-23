@@ -1,0 +1,107 @@
+.agent-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow-glass);
+    color: var(--dark-color);
+}
+
+.agent-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.agent-card.selected {
+    border-color: var(--primary-color);
+    background: rgba(77,163,199,0.10);
+}
+
+.agent-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(45deg, #4f46e5, #6366f1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agent-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.summary-result {
+    background: var(--glass-bg);
+    border: 1.5px solid var(--success-color);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--dark-color);
+}
+
+.summary-result::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--success-color), #059669);
+}
+
+.stats-card {
+    background: var(--glass-bg);
+    border-radius: 14px;
+    padding: 1rem;
+    text-align: center;
+    border: 1.5px solid var(--border-color);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--dark-color);
+}
+
+.stats-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.history-card {
+    background: var(--glass-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow-glass);
+    border: 1.5px solid var(--border-color);
+    overflow: hidden;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--dark-color);
+}
+
+.history-item {
+    border-left: 4px solid var(--border-color);
+    transition: all 0.3s ease;
+    background: var(--glass-bg);
+    border-radius: 14px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--dark-color);
+}
+
+.history-item:hover {
+    border-left-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+}

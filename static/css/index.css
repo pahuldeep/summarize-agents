@@ -1,0 +1,118 @@
+:root {
+    --primary-color: #4da3c7;
+    --secondary-color: #b2d8e5;
+    --success-color: #6fcf97;
+    --warning-color: #f2c94c;
+    --danger-color: #eb5757;
+    --dark-color: #222831;
+    --light-color: #f7fafd;
+    --border-color: rgba(200,200,200,0.25);
+    --glass-bg: rgba(255,255,255,0.65);
+    --glass-blur: blur(22px);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --transition: all 0.2s ease;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #f7fafd 0%, #e3e9ef 100%);
+    min-height: 100vh;
+    color: var(--dark-color);
+    -webkit-font-smoothing: antialiased;
+    /* Glassmorphism effect for background */
+    background-attachment: fixed;
+}
+
+.main-container {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: 24px;
+    border: 1.5px solid var(--border-color);
+    box-shadow: var(--shadow-glass);
+    margin: 2rem 0;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+
+/* Loading spinner improvements */
+.loading-spinner {
+    display: none;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6b7280;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    margin: 2rem 0;
+}
+
+.feature-badge {
+    background: linear-gradient(135deg, var(--warning-color), #f97316);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+}
+
+/* Streaming UI Styles */
+.streaming-container {
+    position: relative;
+}
+
+.streaming-status {
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.streaming-content {
+    min-height: 100px;
+    padding: 1rem;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.streaming-placeholder {
+    text-align: center;
+    padding: 2rem;
+    opacity: 0.7;
+}
+
+
+

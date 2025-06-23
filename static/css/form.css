@@ -1,0 +1,55 @@
+.form-control {
+    border: 1.5px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--glass-bg);
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--dark-color);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(77, 163, 199, 0.10);
+    background: rgba(255,255,255,0.95);
+    color: var(--dark-color);
+}
+
+
+.text-counter {
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Progress bar enhancements */
+.progress {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 1rem;
+    box-shadow: var(--shadow-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success-color), #b2d8e5cc);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px 0 rgba(111, 207, 151, 0.10);
+}

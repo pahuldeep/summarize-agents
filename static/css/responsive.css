@@ -1,0 +1,20 @@
+@media (max-width: 768px) {
+
+    .main-container {
+        margin: 1rem;
+        border-radius: 16px;
+    }
+
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .header-section {
+        padding: 1.5rem;
+    }
+
+    .summary-content {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+}
