@@ -5,10 +5,10 @@ Welcome to this Interactive Summarization Application! This repository contains 
 ## Screenshots
 
 ### Desktop Interface
-![Front Page](screenshots/front.png) ![Input Section](screenshots/input.png) ![Results Display](screenshots/result.png) ![History View](screenshots/history.png) ![Tips and Help](screenshots/tips.png)
+<img src="screenshots/front.png" width="250" alt="Front Page"> <img src="screenshots/input.png" width="250" alt="Input Section"> <img src="screenshots/result.png" width="250" alt="Result View"> <img src="screenshots/history.png" width="250" alt="History View"> <img src="screenshots/tips.png" width="250" alt="History View">
 
 ### Mobile Interface
-<img src="screenshots/android_front.png" width="150" alt="Mobile Front"> <img src="screenshots/android_input.png" width="150" alt="Mobile Input"> <img src="screenshots/android_history.png" width="150" alt="Mobile History">
+<img src="screenshots/android_front.png" width="250" alt="Mobile Front"> <img src="screenshots/android_input.png" width="250" alt="Mobile Input"> <img src="screenshots/android_history.png" width="250" alt="Mobile History">
 
 ## Directory Structure
 
