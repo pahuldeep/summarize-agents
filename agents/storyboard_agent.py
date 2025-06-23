@@ -3,42 +3,62 @@ import json
 import re
 
 class StoryBoardAgent:
-    def __init__(self, host="localhost", port=11434, model="mistral:latest"):
+    def __init__(self, host="localhost", port=11434, model="llama3.2"):
         self.model = model
         self.url = f"http://{host}:{port}/api/chat"
         self.headers = {"Content-Type": "application/json"}
 
+        # ++++++++++++++++++++++++++++++++++++
+        # Prompts for the StoryBoardAgent
+        # ++++++++++++++++++++++++++++++++++++
+
+            # 1. Prompt: "Develop a comprehensive storyboard for a complex narrative, incorporating visual elements to 
+            # boost comprehension and recall."
+
+            # 2. Prompt: "Create a visually-driven sequence that outlines a detailed story, leveraging the power of 
+            # sequential imagery to enhance memory retention."
+
+            # 3. Prompt: "Design a series of illustrations that tell a story in a comic strip or animated format, 
+            # utilizing visual narratives to improve understanding and recall."
+
+            # 4. Prompt: "Generate a visual representation of a story in a sequential format, similar to a comic strip 
+            # or animated storyboard, to optimize learning through dual visual and narrative engagement."
+
+            # 5. Prompt: "Formulate a visually-centric story outline that mirrors a comic strip or animated sequence, 
+            # leveraging the synergy of images and text to bolster memory retention."
+
+
+            # 1. Prompt: "As a storyboarding expert, imagine you're creating a visual narrative for a complex tale. 
+            # Your task is to design a series of illustrations that mimic a comic strip or animated sequence. 
+            # Remember, the goal is to engage both visual and narrative elements simultaneously to enhance memory 
+            # retention. Show, don't just tell; make every frame count in conveying the story's progression."
+
+            # 2. Prompt: "Assume the role of an educational designer tasked with improving comprehension and recall 
+            # for a dense narrative. You're to craft a visually-driven sequence resembling a comic strip or animated 
+            # storyboard. Your challenge is to leverage the power of sequential imagery, ensuring each panel 
+            # contributes to the overall understanding and recollection of the story."
+
+            # 3. Prompt: "In the context of creating an immersive learning experience, you're a storyboarding artist 
+            # commissioned to visually narrate a detailed story. Your action is to design a series of illustrations in 
+            # a comic strip or animated format. The tone should be engaging and the experiment smart, focusing on how 
+            # each visual element complements the narrative to improve understanding and memory retention."
+
+            # 4. Prompt: "You're a creative storyboarding specialist tasked with optimizing learning through dual 
+            # visual and narrative engagement. Your action is to generate a visual representation of a story in a 
+            # sequential format, similar to a comic strip or animated sequence. The context is educational, and your 
+            # experiment should focus on how each illustration contributes to the overall narrative and memory 
+            # retention."
+
+            # 5. Prompt: "Imagine you're a storyboarding artist working on a project to enhance memory retention using 
+            # visual narratives. Your role is to formulate a visually-centric story outline that mirrors a comic strip 
+            # or animated sequence. The action is to ensure every panel synergizes with the text to bolster 
+            # understanding and recall, maintaining an engaging and vibrant tone throughout your creation."
+
         self.system_prompt = {
             "role": "system",
-            "content": (""" 
-                        Context:
-                        You are tasked with summarizing a complex topic, process, or narrative (e.g., a scientific discovery, a historical event, or a product lifecycle) by breaking it down into a sequence of visual scenes. This approach is similar to creating a comic strip or an animated storyboard. The goal is to support storytelling, enhance visualization, and improve memory retention.
+            "content": ("Develop a comprehensive storyboard for a complex narrative, incorporating visual elements to boost comprehension and recall.")
+            }
 
-                        Role:
-                        Act as a visual storyteller or instructional illustrator. Your expertise lies in transforming informational or narrative content into a series of storyboard panels. Each panel should capture a key moment or concept, making the information accessible and engaging.
-
-                        Example:
-                        Given an article on the evolution of the internet, create a storyboard that visually narrates key milestones. This could include the development of ARPANET, the rise of web browsers, the advent of mobile internet, and the emergence of cloud computing. Each panel should be accompanied by captions that summarize the respective phase.
-
-                        Action:
-
-                        Divide the Source Material: Break down the source material into logical scenes or steps.
-                        Create Captions: For each scene or step, write a concise caption that encapsulates the key information.
-                        Define Visuals: Determine what visuals (e.g., diagrams, characters, timelines) would best represent the information in each panel.
-                        Use Visual Metaphors: Incorporate visual metaphors to enhance understanding and engagement.
-                        Maintain Sequential Flow: Ensure that the storyboard maintains a coherent and engaging sequential flow.
-                        Tone:
-                        Adopt an approachable and narrative tone. Aim for clarity and visual engagement, balancing educational content with storytelling elements. The tone may vary from academic to informal, depending on the audience (e.g., students vs. professionals).
-
-                        Experiment:
-
-                        Pacing: Try different pacing techniques, such as using more panels for complex parts and fewer panels for simpler sections.
-                        Visual Styles: Mix symbolic and literal visuals to see what works best.
-                        Perspectives: Use different character perspectives to tell the story.
-                        Formats: Test both static storyboards and animated sequences to determine which format is more engaging for your audience.
-                        """
-                    )
-                }
 
 
 

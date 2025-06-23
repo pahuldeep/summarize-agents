@@ -1,80 +1,19 @@
-from flask import Flask, render_template, request, jsonify, session
-from flask import Response,  stream_with_context
-
-import importlib.util
-import inspect
+from agent_manage import AgentManager
 import uuid
-
 import os
-import time
+
+from flask import Flask, render_template, request, jsonify, session, Response
+
 import json
+import re 
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Secure session management
 
-class AgentManager:
-    def __init__(self):
-        self.agents = {}
-        self.agent_classes = {}
-        self.load_agents()
-    
-    def load_agents(self):
-        """Dynamically load agent classes from Python files"""
-        # You can extend this to scan a directory for agent files
-        agent_files = [
-            'agents/condensed_agent.py',
-            'agents/descriptive_agent.py',
-            'agents/context_agent.py',
-        ]
-        
-        for file_path in agent_files:
-            if os.path.exists(file_path):
-                try:
-                    self.load_agent_from_file(file_path)
-                except Exception as e:
-                    print(f"Error loading {file_path}: {e}")
-    
-    def load_agent_from_file(self, file_path):
-        """Load agent class from a Python file"""
-        module_name = os.path.splitext(os.path.basename(file_path))[0]
-        spec = importlib.util.spec_from_file_location(module_name, file_path)
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        
-        # Find agent classes in the module
-        for name, obj in inspect.getmembers(module):
-            if (inspect.isclass(obj) and 
-                name.endswith('Agent') and 
-                hasattr(obj, 'summarize_text')):
-                
-                agent_display_name = self.format_agent_name(name)
-                self.agent_classes[agent_display_name] = obj
-                print(f"Loaded agent: {agent_display_name}")
-    
-    def format_agent_name(self, class_name):
-        """Convert class name to display name"""
-        # Convert CamelCase to Title Case
-        import re
-        name = re.sub(r'([A-Z])', r' \1', class_name).strip()
-        return name.replace('Agent', '').strip()
-    
-    def get_agent_instance(self, agent_name):
-        """Get or create agent instance"""
-        if agent_name not in self.agents:
-            if agent_name in self.agent_classes:
-                try:
-                    self.agents[agent_name] = self.agent_classes[agent_name]()
-                except Exception as e:
-                    print(f"Error creating {agent_name} instance: {e}")
-                    return None
-        return self.agents.get(agent_name)
-    
-    def get_available_agents(self):
-        """Get list of available agent names"""
-        return list(self.agent_classes.keys())
 
 # Initialize agent manager
 agent_manager = AgentManager()
+
 
 @app.route('/')
 def index():
@@ -134,85 +73,79 @@ def summarize():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-# @app.route('/summarize_stream', methods=['POST'])
-# def summarize_stream():
-#     """Handle summarization request with streaming response"""
-#     try:
-#         data = request.get_json()
-#         text = data.get('text', '').strip()
-#         agent_name = data.get('agent', '')
+@app.route('/summarize_stream', methods=['POST'])
+def summarize_stream():
+    try:
+        data = request.get_json()
+        text = data.get('text', '').strip()
+        agent_name = data.get('agent', '')
 
-#         if not text:
-#             return jsonify({'error': 'No text provided'}), 400
+        if not text:
+            return jsonify({'error': 'No text provided'}), 400
+        if not agent_name:
+            return jsonify({'error': 'No agent selected'}), 400
 
-#         if not agent_name:
-#             return jsonify({'error': 'No agent selected'}), 400
+        agent = agent_manager.get_agent_instance(agent_name)
+        if not agent:
+            return jsonify({'error': f'Agent {agent_name} not found'}), 404
 
-#         # Get agent instance
-#         agent = agent_manager.get_agent_instance(agent_name)
-#         if not agent:
-#             return jsonify({'error': f'Agent {agent_name} not found'}), 404
+        agent.prepare_messages(text)
+        payload = agent.build_payload()
+        response = agent.send_streaming_request(payload)
 
-#         # Generate unique ID for this request
-#         request_id = str(uuid.uuid4())
+        # def token_stream():
+        #     if not response:
+        #         yield 'data: [ERROR] Could not connect\n\n'
+        #         return
 
-#         def generate():
-#             summary_chunks = agent.summarize_text(text) 
-#             for chunk in summary_chunks:
-#                 yield f"data: {chunk}\n\n"
+        #     for line in response.iter_lines():
+        #         if line:
+        #             try:
+        #                 res = json.loads(line.decode('utf-8'))
+        #                 chunk = res.get('message', {}).get('content', '')
+        #                 if chunk.strip():
+        #                     # Escape newlines for SSE
+        #                     yield f'{chunk}'
+        #             except Exception as e:
+        #                 yield f'data: [ERROR] {str(e)}\n\n'
 
-#         response_headers = {
-#             'Content-Type': 'text/event-stream',
-#             'Cache-Control': 'no-cache',
-#             'Transfer-Encoding': 'chunked'
-#         }
+        def paragraph_stream():
+            if not response:
+                yield '[ERROR] Could not connect'
+                return
 
-#         return Response(stream_with_context(generate()), headers=response_headers)
+            buffer = ""
+            for line in response.iter_lines():
+                if not line:
+                    continue
+                try:
+                    res = json.loads(line.decode('utf-8'))
+                    chunk = res.get('message', {}).get('content', '')
+                    if not chunk:
+                        continue
 
-#     except Exception as e:
-#         return jsonify({'error': str(e)}), 500
+                    buffer += chunk
 
-    
-# @app.route('/summarize_stream', methods=['POST'])
-# def summarize_stream():
-#     data = request.get_json()
-#     text = data.get('text', '')
-#     agent = data.get('agent', 'DefaultAgent')
+                    # Emit paragraph if newlines or sentence boundary detected
+                    while True:
+                        # Find paragraph or sentence delimiter
+                        match = re.search(r'(.+?)([\n]{2,}|[.!?])(\s|$)', buffer)
+                        if not match:
+                            break
+                        segment = match.group(1) + match.group(2)
+                        yield segment.strip()
+                        buffer = buffer[match.end():]
 
-#     @stream_with_context
-#     def generate():
-#         yield json.dumps({'event': 'status', 'data': 'Initializing summarization'}) + '\n'
-#         time.sleep(0.5)
+                except Exception as e:
+                    yield f"[ERROR] Streaming error: {str(e)}"
 
-#         words = text.strip().split()
-#         chunk = ''
-#         count = 0
+            if buffer.strip():
+                yield buffer.strip()  # Emit remainder
 
-#         for word in words:
-#             chunk += word + ' '
-#             count += 1
+        return Response(paragraph_stream(), mimetype='text/event-stream')
 
-#             if count % 10 == 0:
-#                 # simulate partial content streaming
-#                 yield json.dumps({'event': 'content', 'data': chunk.strip()}) + '\n'
-#                 chunk = ''
-#                 time.sleep(0.2)  # simulate delay
-
-#                 # send progress
-#                 progress = min(int((count / len(words)) * 100), 100)
-#                 yield json.dumps({'event': 'progress', 'progress': progress}) + '\n'
-
-#         if chunk:
-#             yield json.dumps({'event': 'content', 'data': chunk.strip()}) + '\n'
-
-#         time.sleep(0.3)
-#         yield json.dumps({
-#             'event': 'complete',
-#             'summary': ' '.join(words[:min(len(words), 100)]),
-#             'agent': agent
-#         }) + '\n'
-
-#     return Response(generate(), mimetype='text/plain')    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/history')

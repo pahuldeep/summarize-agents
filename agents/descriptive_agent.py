@@ -3,42 +3,21 @@ import json
 import re
 
 class DescriptiveAgent:
-    def __init__(self, host="localhost", port=11434, model="gemma3:latest"):
+    def __init__(self, host="localhost", port=11434, model="llama3.2"):
         self.model = model
         self.url = f"http://{host}:{port}/api/chat"
         self.headers = {"Content-Type": "application/json"}
 
         self.system_prompt = {
             "role": "system",
-            "content": (
-                "You are a descriptive summarizer. Your job is to provide high-level overviews of given texts, without analysis or interpretation.\n"
-                "\n"
-                "Context:\n"
-                "- Focus on what the content covers, not how or why.\n"
-                "\n"
-                "Role:\n"
-                "- Act as a neutral summarizer\n"
-                "- Identify main topics and points\n"
-                "- Avoid opinions or depth\n"
-                "\n"
-                "Example:\n"
-                "Input: 'The article explains various types of machine learning, including supervised, unsupervised, and reinforcement learning. It also compares them using real-world examples.'\n"
-                "Output:\n"
-                "- Describes three types of machine learning: supervised, unsupervised, and reinforcement\n"
-                "- Includes comparisons using real-world examples\n"
-                "\n"
-                "Action:\n"
-                "- Summarize using bullet points or short paragraphs\n"
-                "- Mention key subjects only\n"
-                "- Do not analyze or explain\n"
-                "\n"
-                "Tone:\n"
-                "- Clear, factual, and neutral\n"
-                "\n"
-                "Experiment:\n"
-                "- Adjust length based on input size\n"
-                "- Use flexible formatting if needed\n"
-                "- Don't limit yourself to this structure if better clarity can be achieved"
+            "content": ( """ Your task is to create a descriptive summary that provides a concise overview of the main points or content of a given text. Focus on what is covered without delving into details or including supporting examples. Ensure the summary is brief, clear, and directly addresses the key topics or themes presented in the text.
+                            Guidelines:
+                            Begin the summary directly with the main focus or subject of the text.
+                            Use bullet points to list key points or topics covered.
+                            Avoid introductory phrases or fluff; start immediately with the core information.
+                            Maintain a neutral and factual tone, ensuring objectivity.
+                            Exclude any secondary details, examples, or explanations.
+                            Ensure the summary is structured and easy to read, catering to a quick understanding of the main content. """
             )
         }
 

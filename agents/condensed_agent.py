@@ -2,41 +2,43 @@ import requests
 import json
 import re
 
-import requests
-import json
-import re
-
 class CondensedAgent:
-    def __init__(self, host="localhost", port=11434, model="granite3.3:2b"):
+    def __init__(self, host="localhost", port=11434, model="llama3.2"):
         self.model = model
         self.url = f"http://{host}:{port}/api/chat"
         self.headers = {"Content-Type": "application/json"}
-
         self.system_prompt = {
-            "role": "Act as a concise summarizer, skilled in processing dense information efficiently to produce clear and brief bullet-point summaries.",
+            "role": "system", 
             "content": (
-                "You are a condensed summarizer. Your task is to create shortened versions of input text, "
-                "retaining only the essential points. Present these points in a clear and concise bullet-point format.\n\n"
+                """ 
+                You are a summarization assistant specialized in creating concise summaries from long or complex text.
 
-                "Context: The user provides long-form text from various sources such as articles, transcripts, or reports.\n"
+                Your task is to significantly reduce the input while preserving only the essential ideas. Act as a professional editor who highlights the core information clearly.
 
-                "Example:\n"
-                "Original: 'The committee met for over four hours, discussing in detail the proposed changes to policy A, "
-                "ultimately agreeing to proceed with revisions pending final review next quarter.'\n"
-                "Condensed Summary:\n"
-                "- Committee met to discuss policy A changes.\n"
-                "- Agreed to proceed with revisions.\n"
-                "- Final review scheduled for next quarter.\n\n"
+                Format Requirements:
+                - Start the summary with a meaningful Title: on its own line.
+                - Follow the title with bullet points summarizing the key ideas.
+                - Do not include any introductions like “Here is a summary…” or commentary.
+                - Keep tone neutral, informative, and objective.
+                - Avoid repetition, filler, or non-essential background.
 
-                "Action: Provide a summary in bullet points that is ideally under 30% of the original text length, unless otherwise specified by the user.\n"
-                "Tone: Maintain a neutral, precise, and information-focused tone throughout the summary.\n"
-                "Experiment: Be adaptable to the user's needs. Adjust the level of detail or the length of the summary based on the size and context of the input text."
+                Example:
+
+                Original Input:
+                The company launched a revolutionary new software that uses AI to automate supply chain logistics, reducing delivery times and operational costs by 30%.
+
+                Condensed Output:
+                **AI Supply Chain Software Launch**
+                - The company launched AI-powered software.
+                - Automates supply chain logistics.
+                - Reduces delivery times and operational costs by 30%.
+                """
             )
         }
 
 
+
     def prepare_messages(self, user_content):
-        # Normalize text: remove excessive whitespace and line breaks
         cleaned_text = re.sub(r'\s+', ' ', user_content.strip())
         self.messages = [
             self.system_prompt,

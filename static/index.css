@@ -458,6 +458,32 @@ body {
 }
 
 
+/* Markdown */
+.markdown-output h1, 
+.markdown-output h2, 
+.markdown-output h3, 
+.markdown-output h4 {
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+.markdown-output ul {
+    padding-left: 1.25rem;
+    margin: 1rem 0;
+}
+
+.markdown-output li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.markdown-output p {
+    margin-bottom: 1rem;
+}
+
+
 
 @media (max-width: 768px) {
 
