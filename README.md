@@ -5,13 +5,7 @@ Welcome to this Interactive Summarization Application! This repository contains 
 ## Screenshots
 
 ### Desktop Interface
-<div style="display: grid; grid-template-columns: repeat(auto-fit); gap: 20px; margin: 30px 0; max-width: 1200px; margin-left: auto; margin-right: auto;">
-  <img src="screenshots/front.png" width="80%" alt="Front Page" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-  <img src="screenshots/input.png" width="80%" alt="Input Section" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-  <img src="screenshots/result.png" width="80%" alt="Result View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-  <img src="screenshots/history.png" width="80%" alt="History View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-  <img src="screenshots/tips.png" width="80%" alt="Tips View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-</div>
+<img src="screenshots/web_display.gif" width="600" height="400" alt="Web Display">
 
 ### Mobile Interface
 <img src="screenshots/android_front.png" width="250" alt="Mobile Front"> <img src="screenshots/android_input.png" width="250" alt="Mobile Input"> <img src="screenshots/android_history.png" width="250" alt="Mobile History">
