@@ -5,7 +5,13 @@ Welcome to this Interactive Summarization Application! This repository contains 
 ## Screenshots
 
 ### Desktop Interface
-<img src="screenshots/front.png" width="250" alt="Front Page"> <img src="screenshots/input.png" width="250" alt="Input Section"> <img src="screenshots/result.png" width="250" alt="Result View"> <img src="screenshots/history.png" width="250" alt="History View"> <img src="screenshots/tips.png" width="250" alt="History View">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0;">
+  <img src="screenshots/front.png" width="350" alt="Front Page" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <img src="screenshots/input.png" width="250" alt="Input Section" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <img src="screenshots/result.png" width="250" alt="Result View" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <img src="screenshots/history.png" width="250" alt="History View" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <img src="screenshots/tips.png" width="250" alt="Tips View" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+</div>
 
 ### Mobile Interface
 <img src="screenshots/android_front.png" width="250" alt="Mobile Front"> <img src="screenshots/android_input.png" width="250" alt="Mobile Input"> <img src="screenshots/android_history.png" width="250" alt="Mobile History">
