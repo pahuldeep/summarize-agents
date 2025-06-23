@@ -6,11 +6,11 @@ Welcome to this Interactive Summarization Application! This repository contains 
 
 ### Desktop Interface
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0; max-width: 1200px; margin-left: auto; margin-right: auto;">
-  <img src="screenshots/front.png" width="100%" alt="Front Page" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-  <img src="screenshots/input.png" width="100%" alt="Input Section" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-  <img src="screenshots/result.png" width="100%" alt="Result View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-  <img src="screenshots/history.png" width="100%" alt="History View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
-  <img src="screenshots/tips.png" width="100%" alt="Tips View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
+  <img src="screenshots/front.png" width="80%" alt="Front Page" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
+  <img src="screenshots/input.png" width="80%" alt="Input Section" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
+  <img src="screenshots/result.png" width="80%" alt="Result View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
+  <img src="screenshots/history.png" width="80%" alt="History View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
+  <img src="screenshots/tips.png" width="80%" alt="Tips View" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); object-fit: cover; height: 250px;">
 </div>
 
 ### Mobile Interface
